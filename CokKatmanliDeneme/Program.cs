@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.ConfigureSqlContext(builder.Configuration);
 builder.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 builder.Services.ConfigureRepositoryManager();
+builder.Services.ConfigureServiceManager();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

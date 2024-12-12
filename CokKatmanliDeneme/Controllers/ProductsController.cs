@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Entities.Models;
 using Repositories.Contracts;
+using Services.Contracts;
 
 namespace CokKatmanliDeneme.Controllers
 {
@@ -14,9 +15,9 @@ namespace CokKatmanliDeneme.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly IRepositoryManager _context;
+        private readonly IServiceManager _context;
 
-        public ProductsController(IRepositoryManager context)
+        public ProductsController(IServiceManager context)
         {
             _context = context;
         }
@@ -25,7 +26,7 @@ namespace CokKatmanliDeneme.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Product>> GetProducts()
         {
-            return _context.product.GetProductList(false).ToList();
+            return _context.ProductService.GetAllProductss(false).ToList();
         }
 
         // GET: api/Products/5
@@ -34,7 +35,7 @@ namespace CokKatmanliDeneme.Controllers
         {
             try
             {
-                var x = _context.product.GetProductById(id, false);
+                var x = _context.ProductService.GetProduct(id,false);
                 if (x == null)
                 {
                     return NotFound();
@@ -57,11 +58,20 @@ namespace CokKatmanliDeneme.Controllers
                 return BadRequest();
             }
 
-            _context.product.Update(product);
+            var x = _context.ProductService.GetProduct(id, false);
+            if (x == null)
+            {
+                return BadRequest();
+            }
+            else
+            {
+
+            }
 
             try
             {
-                _context.Save();
+                x.ProductName = product.ProductName;
+                _context.ProductService.ProductUpdate(id, x, false);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -83,8 +93,8 @@ namespace CokKatmanliDeneme.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
         {
-            _context.product.AddProduct(product);
-            _context.Save();
+            _context.ProductService.ProductAdd(product);
+
 
             return CreatedAtAction("GetProduct", new { id = product.ID }, product);
         }
@@ -93,21 +103,20 @@ namespace CokKatmanliDeneme.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product =  _context.product.GetProductById(id,false);
+            var product =  _context.ProductService.GetProduct(id,false);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _context.product.DeleteProduct(product);
-             _context.Save();
+            _context.ProductService.ProductRemove(id,false);
 
             return NoContent();
         }
 
         private bool ProductExists(int id)
         {
-            return _context.product.ProductExists(id);
+            return _context.ProductService.ProductExists(id);
         }
     }
 }
