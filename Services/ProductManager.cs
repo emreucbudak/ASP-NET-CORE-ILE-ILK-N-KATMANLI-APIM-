@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using DTOLAR;
+using Entities.Models;
 using Repositories.Contracts;
 using Repositories.EFCore;
 using Services.Contracts;
@@ -28,6 +29,8 @@ namespace Services
         {
             return _manager.product.GetProductById(id, trackChanges);
         }
+
+        public IEnumerable<ProductDto> GetProductsWithCategory(bool trackChanges) => _manager.product.GetProductsWithCategoryAsync(false);
 
         public void ProductAdd(Product product)
         {

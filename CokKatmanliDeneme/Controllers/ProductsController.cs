@@ -26,7 +26,8 @@ namespace CokKatmanliDeneme.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<Product>> GetProducts()
         {
-            return _context.ProductService.GetAllProductss(false).ToList();
+            var x = _context.ProductService.GetProductsWithCategory(false);
+            return Ok(x);
         }
 
         // GET: api/Products/5

@@ -1,4 +1,5 @@
-﻿using Entities.Models;
+﻿using DTOLAR;
+using Entities.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Services.Contracts
         void ProductAdd(Product product);
         void ProductRemove(int id , bool trackChanges);
         void ProductUpdate(int id ,Product product,bool trackChanges);
+        IEnumerable<ProductDto> GetProductsWithCategory(bool trackChanges);
         public bool ProductExists(int id);
 
 

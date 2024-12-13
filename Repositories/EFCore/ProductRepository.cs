@@ -1,4 +1,6 @@
-﻿using Entities.Models;
+﻿using DTOLAR;
+using Entities.Models;
+using Microsoft.EntityFrameworkCore;
 using Repositories.Contracts;
 using System;
 using System.Collections.Generic;
@@ -27,5 +29,30 @@ namespace Repositories.EFCore
         {
             return _context.Set<Product>().Any(p => p.ID == id); // ID'ye göre kontrol
         }
+
+        public IEnumerable<ProductDto> GetProductsWithCategoryAsync(bool trackChanges)
+        {
+            return !trackChanges
+                ? _context.Product
+                    .Include(p => p.Category)
+                    .AsNoTracking()
+                    .Select(p => new ProductDto
+                    {
+                        ProductId = p.ID,
+                        ProductName = p.ProductName,
+                        CategoryName = p.Category.CategoryName
+                    })
+                    .ToList()
+                : _context.Product
+                    .Include(p => p.Category)
+                    .Select(p => new ProductDto
+                    {
+                        ProductId = p.ID,
+                        ProductName = p.ProductName,
+                        CategoryName = p.Category.CategoryName
+                    })
+                    .ToList();
+        }
+
     }
 }
