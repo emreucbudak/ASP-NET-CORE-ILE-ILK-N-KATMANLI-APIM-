@@ -18,6 +18,7 @@ public class RepositoryDbContext : DbContext
             .HasForeignKey(p => p.CategoryID) // Yabancı anahtar Product tablosunda
             .OnDelete(DeleteBehavior.Cascade); // Kategori silindiğinde ilişkili ürünler de silinir
 
+
     }
 
 }
