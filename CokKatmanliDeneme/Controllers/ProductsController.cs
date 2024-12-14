@@ -36,7 +36,7 @@ namespace CokKatmanliDeneme.Controllers
         {
             try
             {
-                var x = _context.ProductService.GetProduct(id,false);
+                var x = _context.ProductService.GetProductDtoById(id,false);
                 if (x == null)
                 {
                     return NotFound();

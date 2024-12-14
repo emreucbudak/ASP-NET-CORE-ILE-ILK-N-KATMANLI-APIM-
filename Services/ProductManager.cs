@@ -30,6 +30,11 @@ namespace Services
             return _manager.product.GetProductById(id, trackChanges);
         }
 
+        public ProductDto GetProductDtoById(int id, bool trackChanges)
+        {
+            return _manager.product.GetProductDtoById(id, trackChanges);
+        }
+
         public IEnumerable<ProductDto> GetProductsWithCategory(bool trackChanges) => _manager.product.GetProductsWithCategoryAsync(false);
 
         public void ProductAdd(Product product)

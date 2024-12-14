@@ -16,6 +16,7 @@ namespace Services.Contracts
         void ProductRemove(int id , bool trackChanges);
         void ProductUpdate(int id ,Product product,bool trackChanges);
         IEnumerable<ProductDto> GetProductsWithCategory(bool trackChanges);
+        ProductDto GetProductDtoById(int id, bool trackChanges);
         public bool ProductExists(int id);
 
 

@@ -17,6 +17,7 @@ namespace Repositories.Contracts
         void UpdateProduct (Product product);
         bool ProductExists(int id);
         public IEnumerable<ProductDto> GetProductsWithCategoryAsync(bool trackChanges);
+        public ProductDto GetProductDtoById(int id,bool trackChanges);
 
 
     }

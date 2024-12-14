@@ -54,5 +54,25 @@ namespace Repositories.EFCore
                     .ToList();
         }
 
+        public ProductDto GetProductDtoById(int id, bool trackChanges)
+        {
+
+
+            return trackChanges ? _context.Product.Where(p => p.ID == id).Include(p => p.Category).Select(p => new ProductDto
+            {
+                ProductId = p.ID,
+                ProductName = p.ProductName,
+                CategoryName = p.Category.CategoryName
+            }).SingleOrDefault() : _context.Product.Where(p => p.ID == id).Include(p => p.Category).AsNoTracking().Select(p => new ProductDto
+            {
+                ProductId = p.ID,
+                ProductName = p.ProductName,
+                CategoryName = p.Category.CategoryName
+            }).SingleOrDefault();
+
+
+
+
+        }
     }
 }
