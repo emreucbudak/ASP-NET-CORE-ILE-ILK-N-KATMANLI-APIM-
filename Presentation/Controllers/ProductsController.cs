@@ -36,7 +36,7 @@ namespace CokKatmanliDeneme.Controllers
         {
             try
             {
-                var x = _context.ProductService.GetProductDtoById(id,false);
+                var x = _context.ProductService.GetProductDtoById(id, false);
                 if (x == null)
                 {
                     return NotFound();
@@ -104,13 +104,13 @@ namespace CokKatmanliDeneme.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product =  _context.ProductService.GetProduct(id,false);
+            var product = _context.ProductService.GetProduct(id, false);
             if (product == null)
             {
                 return NotFound();
             }
 
-            _context.ProductService.ProductRemove(id,false);
+            _context.ProductService.ProductRemove(id, false);
 
             return NoContent();
         }

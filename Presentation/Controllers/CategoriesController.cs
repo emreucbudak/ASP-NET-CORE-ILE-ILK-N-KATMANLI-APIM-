@@ -35,12 +35,12 @@ namespace CokKatmanliDeneme.Controllers
         [HttpGet("{id}")]
         public ActionResult<Category> GetCategory(int id)
         {
-            var x = _manager.CategoryService.GetCategory(id,false);
+            var x = _manager.CategoryService.GetCategory(id, false);
             if (x == null)
             {
                 return NotFound();
             }
-            var y = _manager.CategoryService.GetCategoryWithProduct(id,false);
+            var y = _manager.CategoryService.GetCategoryWithProduct(id, false);
             return Ok(y);
         }
 
@@ -53,7 +53,7 @@ namespace CokKatmanliDeneme.Controllers
             {
                 return BadRequest();
             }
-            var x = _manager.CategoryService.GetCategory(id,false);
+            var x = _manager.CategoryService.GetCategory(id, false);
             if (x == null)
             {
                 return BadRequest();
