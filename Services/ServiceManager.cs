@@ -13,9 +13,9 @@ namespace Services
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
 
-        public ServiceManager(IRepositoryManager _repomanage)
-        {
-            _productService = new Lazy<IProductService>(() => new ProductManager(_repomanage));
+        public ServiceManager(IRepositoryManager _repomanage ,ILoggerService _service)
+        { 
+            _productService = new Lazy<IProductService>(() => new ProductManager(_repomanage, _service));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(_repomanage));
         }
 

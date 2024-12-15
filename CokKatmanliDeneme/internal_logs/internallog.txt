@@ -1,0 +1,28 @@
+2024-12-15 14:49:08.5464 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 14:49:08.5615 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 14:49:08.5615 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 14:49:08.5825 Info Configuration initialized.
+2024-12-15 14:51:45.9471 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 14:51:45.9631 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 14:51:45.9631 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 14:51:45.9631 Info Configuration initialized.
+2024-12-15 14:52:52.6982 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 14:52:52.7108 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 14:52:52.7181 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 14:52:52.7181 Info Configuration initialized.
+2024-12-15 14:57:51.6472 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 14:57:51.6611 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 14:57:51.6709 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 14:57:51.6846 Info Configuration initialized.
+2024-12-15 15:00:17.0717 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 15:00:17.0846 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 15:00:17.0911 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 15:00:17.0911 Info Configuration initialized.
+2024-12-15 15:00:54.3931 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 15:00:54.4040 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 15:00:54.4040 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 15:00:54.4194 Info Configuration initialized.
+2024-12-15 15:02:09.2300 Info Registered target NLog.Targets.FileTarget(Name=logfile)
+2024-12-15 15:02:09.2403 Info NLog, Version=5.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c. File version: 5.3.4.2778. Product version: 5.3.4+73d83d3161d31288ca5c554cc50d27b6bed5f28b. GlobalAssemblyCache: False
+2024-12-15 15:02:09.2461 Info Validating config: TargetNames=logfile, ConfigItems=12, FilePath=C:\Users\gamee\source\repos\CokKatmanliDeneme\CokKatmanliDeneme\nlog.config
+2024-12-15 15:02:09.2461 Info Configuration initialized.

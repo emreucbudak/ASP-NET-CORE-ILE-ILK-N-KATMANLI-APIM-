@@ -16,6 +16,7 @@ namespace CokKatmanliDeneme.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly IServiceManager _context;
+        private readonly ILoggerService _logger;
 
         public ProductsController(IServiceManager context)
         {
@@ -104,11 +105,9 @@ namespace CokKatmanliDeneme.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = _context.ProductService.GetProduct(id, false);
-            if (product == null)
-            {
-                return NotFound();
-            }
+            var product = _context.ProductService.GetProduct(id, true);
+
+
 
             _context.ProductService.ProductRemove(id, false);
 

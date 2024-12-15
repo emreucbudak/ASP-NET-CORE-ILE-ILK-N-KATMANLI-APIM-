@@ -14,10 +14,12 @@ namespace Services
     public class ProductManager : IProductService
     {
         private readonly IRepositoryManager _manager;
+        private readonly ILoggerService _logger;
 
-        public ProductManager(IRepositoryManager manager)
+        public ProductManager(IRepositoryManager manager, ILoggerService logger)
         {
             _manager = manager;
+            _logger = logger;
         }
 
         public IEnumerable<Product> GetAllProductss(bool trackChanges)
@@ -53,7 +55,9 @@ namespace Services
             var x = _manager.product.GetProductById(id,trackChanges);
             if (x is null)
             {
-                throw new Exception("deneme");
+                string message = $"Ürünler Listesinde Id'si {id} olan öğe bulunamadı ";
+                _logger.LogInfo(message);
+                throw new Exception(message);
             }
             _manager.product.DeleteProduct(x);
 
@@ -65,7 +69,9 @@ namespace Services
             var x = _manager.product.GetProductById(id,trackChanges);
             if (x is null)
             {
-                throw new ArgumentException("deneme");
+                string message = $"Id'si {id} olan öğe bulunamadı ";
+                _logger.LogInfo(message);
+                throw new Exception(message);
             }
             x.ProductName = product.ProductName;
             _manager.product.UpdateProduct(x);
