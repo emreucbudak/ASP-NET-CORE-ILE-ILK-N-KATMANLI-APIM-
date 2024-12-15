@@ -11,8 +11,7 @@ namespace CokKatmanliDeneme.Extensions
     {
         public static void ConfigureSqlContext (this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<RepositoryDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                b => b.MigrationsAssembly("CokKatmanliDeneme")));
+            services.AddDbContext<RepositoryDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
         }
         public static void ConfigureRepositoryManager (this IServiceCollection services)
         {
