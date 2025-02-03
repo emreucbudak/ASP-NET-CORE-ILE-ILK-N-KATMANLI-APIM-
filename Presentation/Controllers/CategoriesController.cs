@@ -58,17 +58,12 @@ namespace CokKatmanliDeneme.Controllers
             {
                 return BadRequest();
             }
-            try
-            {
+
                 x.CategoryName = category.CategoryName;
                 _manager.CategoryService.UpdateCategoryFromService(x);
                 return NoContent();
 
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500);
-            }
+
 
 
         }

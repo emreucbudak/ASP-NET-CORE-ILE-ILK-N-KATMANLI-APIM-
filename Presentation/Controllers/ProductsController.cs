@@ -35,19 +35,15 @@ namespace CokKatmanliDeneme.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            try
-            {
+
                 var x = _context.ProductService.GetProductDtoById(id, false);
                 if (x == null)
                 {
                     return NotFound();
                 }
                 return Ok(x);
-            }
-            catch (Exception ex)
-            {
-                return BadRequest(ex.Message);
-            }
+            
+
         }
 
         // PUT: api/Products/5
@@ -70,22 +66,11 @@ namespace CokKatmanliDeneme.Controllers
 
             }
 
-            try
-            {
+
                 x.ProductName = product.ProductName;
                 _context.ProductService.ProductUpdate(id, x, false);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ProductExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+
+
 
             return NoContent();
         }
