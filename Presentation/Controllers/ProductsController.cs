@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using Entities.Models;
 using Repositories.Contracts;
 using Services.Contracts;
+using Entities.Exceptions;
+using Entities.Dto;
 
 namespace CokKatmanliDeneme.Controllers
 {
@@ -37,10 +39,7 @@ namespace CokKatmanliDeneme.Controllers
         {
 
                 var x = _context.ProductService.GetProductDtoById(id, false);
-                if (x == null)
-                {
-                    return NotFound();
-                }
+
                 return Ok(x);
             
 
@@ -49,26 +48,17 @@ namespace CokKatmanliDeneme.Controllers
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public IActionResult PutProduct(int id, Product product)
+        public IActionResult PutProduct(int id, ProductDtoForUpdate product)
         {
             if (id != product.ID)
             {
                 return BadRequest();
             }
 
-            var x = _context.ProductService.GetProduct(id, false);
-            if (x == null)
-            {
-                return BadRequest();
-            }
-            else
-            {
-
-            }
 
 
-                x.ProductName = product.ProductName;
-                _context.ProductService.ProductUpdate(id, x, false);
+                
+                _context.ProductService.ProductUpdate(id, product, false);
 
 
 
@@ -90,7 +80,7 @@ namespace CokKatmanliDeneme.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {
-            var product = _context.ProductService.GetProduct(id, true);
+
 
 
 

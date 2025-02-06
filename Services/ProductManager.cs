@@ -1,4 +1,7 @@
-﻿using DTOLAR;
+﻿using AutoMapper;
+using DTOLAR;
+using Entities.Dto;
+using Entities.Exceptions;
 using Entities.Models;
 using Repositories.Contracts;
 using Repositories.EFCore;
@@ -15,16 +18,19 @@ namespace Services
     {
         private readonly IRepositoryManager _manager;
         private readonly ILoggerService _logger;
+        private readonly IMapper _mapper;
 
-        public ProductManager(IRepositoryManager manager, ILoggerService logger)
+        public ProductManager(IRepositoryManager manager, ILoggerService logger, IMapper mapper)
         {
             _manager = manager;
             _logger = logger;
+            _mapper = mapper;
         }
 
-        public IEnumerable<Product> GetAllProductss(bool trackChanges)
+        public IEnumerable<ProductDto> GetAllProductss(bool trackChanges)
         {
-            return _manager.product.GetProductList(trackChanges);
+            var x =  _manager.product.GetProductList(trackChanges);
+            return _mapper.Map<IEnumerable<ProductDto>>(x);
         }
 
         public Product GetProduct(int id, bool trackChanges)
@@ -34,7 +40,12 @@ namespace Services
 
         public ProductDto GetProductDtoById(int id, bool trackChanges)
         {
-            return _manager.product.GetProductDtoById(id, trackChanges);
+            var x = _manager.product.GetProductDtoById(id, trackChanges);
+            if (x == null)
+            {
+                throw new ProductNotFoundException(id);
+            }
+            return x;
         }
 
         public IEnumerable<ProductDto> GetProductsWithCategory(bool trackChanges) => _manager.product.GetProductsWithCategoryAsync(false);
@@ -52,33 +63,27 @@ namespace Services
 
         public void ProductRemove(int id, bool trackChanges)
         {
-            var x = _manager.product.GetProductById(id,trackChanges);
+            var x = _manager.product.GetProductById(id, trackChanges);
             if (x is null)
             {
-                string message = $"Ürünler Listesinde Id'si {id} olan öğe bulunamadı ";
-                _logger.LogInfo(message);
-                throw new Exception(message);
+                throw new ProductNotFoundException(id);
             }
             _manager.product.DeleteProduct(x);
 
             _manager.Save();
         }
 
-        public void ProductUpdate(int id ,Product product, bool trackChanges)
+        public void ProductUpdate(int id, ProductDtoForUpdate product, bool trackChanges)
         {
-            var x = _manager.product.GetProductById(id,trackChanges);
+            var x = _manager.product.GetProductById(id, trackChanges);
             if (x is null)
             {
-                string message = $"Id'si {id} olan öğe bulunamadı ";
-                _logger.LogInfo(message);
-                throw new Exception(message);
+                throw new ProductNotFoundException(id);
             }
-            x.ProductName = product.ProductName;
+            x = _mapper.Map<Product>(product);
             _manager.product.UpdateProduct(x);
 
             _manager.Save();
         }
-
-
     }
 }

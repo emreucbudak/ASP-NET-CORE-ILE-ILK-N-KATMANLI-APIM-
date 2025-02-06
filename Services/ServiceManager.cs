@@ -1,4 +1,5 @@
-﻿using Repositories.Contracts;
+﻿using AutoMapper;
+using Repositories.Contracts;
 using Services.Contracts;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,9 @@ namespace Services
         private readonly Lazy<IProductService> _productService;
         private readonly Lazy<ICategoryService> _categoryService;
 
-        public ServiceManager(IRepositoryManager _repomanage ,ILoggerService _service)
+        public ServiceManager(IRepositoryManager _repomanage ,ILoggerService _service, IMapper mapper)
         { 
-            _productService = new Lazy<IProductService>(() => new ProductManager(_repomanage, _service));
+            _productService = new Lazy<IProductService>(() => new ProductManager(_repomanage, _service , mapper));
             _categoryService = new Lazy<ICategoryService>(() => new CategoryManager(_repomanage));
         }
 
